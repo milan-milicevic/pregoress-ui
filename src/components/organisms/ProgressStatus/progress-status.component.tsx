@@ -1,5 +1,6 @@
 import { FC, useContext } from 'react';
 
+import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -27,20 +28,22 @@ export const ProgressStatus: FC = () => {
       <List>
         {progressData.phases.map((phase, phaseIndex) => {
           return (
-            <ListItem key={phaseIndex}>
-              <ListItemAvatar>
-                <ProgressStatusStyled.AvatarStyled>
-                  {phaseIndex}
-                </ProgressStatusStyled.AvatarStyled>
-              </ListItemAvatar>
-              <ProgressStatusStyled.CheckedTitileWrapper>
-                <ListItemText primary={phase.name} />
-                {phase.steps.every((step) => step.completed) ? (
-                  <CheckIcon fontSize="large" />
-                ) : null}
-              </ProgressStatusStyled.CheckedTitileWrapper>
+            <Box display="flex" flexDirection="column">
+              <ListItem key={phaseIndex}>
+                <ListItemAvatar>
+                  <ProgressStatusStyled.AvatarStyled>
+                    {phaseIndex}
+                  </ProgressStatusStyled.AvatarStyled>
+                </ListItemAvatar>
+                <ProgressStatusStyled.CheckedTitileWrapper>
+                  <ListItemText primary={phase.name} />
+                  {phase.steps.every((step) => step.completed) ? (
+                    <CheckIcon fontSize="large" />
+                  ) : null}
+                </ProgressStatusStyled.CheckedTitileWrapper>
+              </ListItem>
               <PhaseCheckboxList phase={phase} />
-            </ListItem>
+            </Box>
           );
         })}
       </List>
