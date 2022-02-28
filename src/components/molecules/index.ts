@@ -1,1 +1,1 @@
-export * from './CheckboxList';
+export * from './PhaseCheckboxList';

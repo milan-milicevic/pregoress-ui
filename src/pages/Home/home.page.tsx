@@ -1,21 +1,19 @@
-import logo from 'assets/logo.svg';
+/* Components */
+import { ErrorMessage } from 'components/atoms';
+import { ProgressStatus } from 'components/organisms';
+
+/* Hooks */
+import { useProgressData } from 'hooks';
+
+/* Styles */
+import HomePageStyled from './home.styled';
 
 export const HomePage = () => {
+  const { progressData, error } = useProgressData();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HomePageStyled.HomePageContainer fixed>
+      {error ? <ErrorMessage /> : <ProgressStatus progress={progressData} />}
+    </HomePageStyled.HomePageContainer>
   );
 };
