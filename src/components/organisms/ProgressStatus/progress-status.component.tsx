@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,20 +10,22 @@ import CheckIcon from '@mui/icons-material/Check';
 /* Componenets */
 import { PhaseCheckboxList } from 'components/molecules';
 
-/* Types */
-import type { ProgressStatusProps } from './progress-status.types';
+/* Context */
+import { ProgressDataContext } from 'providers';
 
 /* Styles */
 import ProgressStatusStyled from './progress-status.styled';
 
-export const ProgressStatus: FC<ProgressStatusProps> = ({ progress }) => {
-  return progress && progress.phases.length > 0 ? (
+export const ProgressStatus: FC = () => {
+  const { progressData } = useContext(ProgressDataContext);
+
+  return progressData && progressData.phases.length > 0 ? (
     <ProgressStatusStyled.ProgressStatusWrapper>
       <Typography variant="h5" paddingLeft="1rem">
         My startup progress
       </Typography>
       <List>
-        {progress.phases.map((phase, phaseIndex) => {
+        {progressData.phases.map((phase, phaseIndex) => {
           return (
             <ListItem key={phaseIndex}>
               <ListItemAvatar>

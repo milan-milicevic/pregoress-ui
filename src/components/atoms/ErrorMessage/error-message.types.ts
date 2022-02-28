@@ -1,3 +1,4 @@
 export interface ErrorMessageProps {
-  message?: string;
+  error: Error;
+  resetErrorBoundary: () => void;
 }

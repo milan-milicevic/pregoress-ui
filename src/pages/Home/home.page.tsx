@@ -1,19 +1,23 @@
+import { ErrorBoundary } from 'react-error-boundary';
+
 /* Components */
 import { ErrorMessage } from 'components/atoms';
 import { ProgressStatus } from 'components/organisms';
 
-/* Hooks */
-import { useProgressData } from 'hooks';
+/* Providers */
+import { ProgressDataProvider } from 'providers';
 
 /* Styles */
 import HomePageStyled from './home.styled';
 
 export const HomePage = () => {
-  const { progressData, error } = useProgressData();
-
   return (
     <HomePageStyled.HomePageContainer fixed>
-      {error ? <ErrorMessage /> : <ProgressStatus progress={progressData} />}
+      <ErrorBoundary FallbackComponent={ErrorMessage}>
+        <ProgressDataProvider>
+          <ProgressStatus />
+        </ProgressDataProvider>
+      </ErrorBoundary>
     </HomePageStyled.HomePageContainer>
   );
 };
