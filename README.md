@@ -2,6 +2,10 @@
 
 This project was create as OAK's Lab assignment.
 
+## Starting the project
+
+In order to install packages you need to have yarn installed globally. After installing yarn run command yarn install and you are ready to go.
+
 ## Available Commands
 
 In the project directory, you can run:
