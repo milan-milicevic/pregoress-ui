@@ -28,7 +28,7 @@ export const ProgressStatus: FC = () => {
       <List>
         {progressData.phases.map((phase, phaseIndex) => {
           return (
-            <Box display="flex" flexDirection="column">
+            <Box display="flex" flexDirection="column" key={phase.name}>
               <ListItem key={phaseIndex}>
                 <ListItemAvatar>
                   <ProgressStatusStyled.AvatarStyled>
@@ -42,7 +42,7 @@ export const ProgressStatus: FC = () => {
                   ) : null}
                 </ProgressStatusStyled.CheckedTitileWrapper>
               </ListItem>
-              <PhaseCheckboxList phase={phase} />
+              <PhaseCheckboxList phase={phase} index={phaseIndex} />
             </Box>
           );
         })}
